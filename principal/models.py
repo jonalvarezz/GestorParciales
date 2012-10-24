@@ -5,34 +5,35 @@ from django.contrib.auth.models import User
 class Materia(models.Model):
 	ID_materia = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	nombre = models.TextField()
-	codigo = models.TextField(unique=True)
-	Programa = models.TextField()
+	ID_programa = models.BigIntegerField()
 
 	def __unicode__(self):
 		return self.nombre
 
-class Parcial(models.Model):
+class Parciale(models.Model):
 	ID_parcial = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
-	materia = models.TextField()
-	profesor = models.TextField()
+	ID_materia = models.BigIntegerField()
+	ID_profesor = models.BigIntegerField()
 	dificultad = models.BigIntegerField()
-	nota = models.BigIntegerField() 
 	nivel = models.BigIntegerField()
+	nota =  models.BigIntegerField()
 	fecha = models.DateTimeField(auto_now=False)
+	semestre = models.BigIntegerField()
 
 	def __unicode__(self):
 		return self.nivel	
 
-class Parcialhoja(models.Model):
+class Phoja(models.Model):
 	ID_parcial = models.BigIntegerField(max_length=50,)
 	ID_hoja = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
-	numero = models.TextField()	
+	numero = models.TextField()
+	hoja = models.ImageField(upload_to='parciles', verbose_name='Imágen')	
 
 	def __unicode__(self):
 		return self.nivel	
 
 
-class Programa(models.Model):
+class Carrera(models.Model):
 	ID_programa = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	nombre = models.TextField()
 	codigo = models.TextField(unique=True)
@@ -46,19 +47,19 @@ class Profesor(models.Model):
 	nombre = models.TextField()
 	apellido = models.TextField()
 	nick = models.TextField()
-	falcultad= models.TextField()
+	ID_programa= models.BigIntegerField()
 	correo1 = models.TextField()
 	correo2 = models.TextField()
 
 	def __unicode__(self):
 		return self.nivel	
 
-class Estudiante(models.Model):
+class Cliente(models.Model):
 	ID_estudiante = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	nombre = models.TextField()
 	fechanacimiento = models.DateTimeField(auto_now=False)
 	apellido = models.TextField()
-	carera = models.TextField()
+	ID_programa = models.BigIntegerField()
 	correo = models.TextField()
 	clave = models.TextField()
 	telefono = models.TextField()
@@ -67,11 +68,8 @@ class Estudiante(models.Model):
 		return self.nivel	
 
 class Profesor_Materia(models.Model):
-	ID_profesor = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
+	ID_profesor = models.BigIntegerField()
 	ID_materia = models.BigIntegerField()
-	Grupo = models.BigIntegerField()
-	Horario = models.TextField()
-	year = models.BigIntegerField()
 	
 	def __unicode__(self):
 		return self.nivel	

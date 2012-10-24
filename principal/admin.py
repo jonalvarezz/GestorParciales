@@ -1,16 +1,16 @@
-from principal.models import Parcial
-from principal.models import Estudiante
+from principal.models import Parciale
+from principal.models import Cliente
 from principal.models import Profesor
 from principal.models import Profesor_Materia
-from principal.models import Programa
+from principal.models import Carrera
 from principal.models import Materia
-from principal.models import Parcialhoja
+from principal.models import Phoja
 from django.contrib import admin
 
-admin.site.register(Estudiante)
+admin.site.register(Cliente)
 admin.site.register(Materia)
 admin.site.register(Profesor)
 admin.site.register(Profesor_Materia)
-admin.site.register(Programa)
-admin.site.register(Parcial)
-admin.site.register(Parcialhoja)
+admin.site.register(Carrera)
+admin.site.register(Parciale)
+admin.site.register(Phoja)
