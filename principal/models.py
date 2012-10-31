@@ -2,6 +2,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 #-----------------------modelos--------------------------------------------------------------
+class Parciale(models.Model):
+	ID_parcial = models.TextField(max_length=50,primary_key = True)
+	ID_materia = models.BigIntegerField()
+	ID_profesor = models.BigIntegerField()
+	dificultad = models.BigIntegerField()
+	nota =  models.BigIntegerField()
+	fecha = models.DateTimeField()
+	semestre = models.BigIntegerField()
+
+	def __unicode__(self):
+		return self.ID_parcial	
+
 class Materia(models.Model):
 	ID_materia = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	nombre = models.TextField()
@@ -10,34 +22,21 @@ class Materia(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-class Parciale(models.Model):
-	ID_parcial = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
-	ID_materia = models.BigIntegerField()
-	ID_profesor = models.BigIntegerField()
-	dificultad = models.BigIntegerField()
-	nivel = models.BigIntegerField()
-	nota =  models.BigIntegerField()
-	fecha = models.DateTimeField(auto_now=False)
-	semestre = models.BigIntegerField()
-
-	def __unicode__(self):
-		return self.nivel	
-
 class Phoja(models.Model):
 	ID_parcial = models.BigIntegerField(max_length=50,)
 	ID_hoja = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	numero = models.TextField()
-	hoja = models.ImageField(upload_to='parciles', verbose_name='Imágen')	
+#	hoja = models.ImageField(upload_to='parciles', verbose_name='Imágen')	
 
 	def __unicode__(self):
-		return self.nivel	
+		return self.ID_parcial	
 
 
 class Carrera(models.Model):
 	ID_programa = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
 	nombre = models.TextField()
 	codigo = models.TextField(unique=True)
-	semaforo = models.ImageField(upload_to='semaforos', verbose_name='Imágen')
+#	semaforo = models.ImageField(upload_to='semaforos', verbose_name='Imágen')
 
 	def __unicode__(self):
 		return self.nombre
@@ -52,7 +51,7 @@ class Profesor(models.Model):
 	correo2 = models.TextField()
 
 	def __unicode__(self):
-		return self.nivel	
+		return self.nombre	
 
 class Cliente(models.Model):
 	ID_estudiante = models.BigIntegerField(max_length=50,unique=True,primary_key = True)
@@ -65,12 +64,12 @@ class Cliente(models.Model):
 	telefono = models.TextField()
     
 	def __unicode__(self):
-		return self.nivel	
+		return self.nombre	
 
 class Profesor_Materia(models.Model):
 	ID_profesor = models.BigIntegerField()
 	ID_materia = models.BigIntegerField()
 	
 	def __unicode__(self):
-		return self.nivel	
+		return self.ID_profesor	
 

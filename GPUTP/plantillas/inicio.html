@@ -5,24 +5,30 @@
 	<meta charset='utf-8'>
   </head>
   <body>
+    <head></head>
   	<nav>
   		<a href="/">Inicio</a>
-      
   		<a href="/parciales">parciales</a>
   		<a href="/Materias">Materia</a>
   		<a href="/Cuenta">Mi Cuenta</a>
-      
-
-
-
   	</nav>
-    <h1>Lista de materias</h1>
-	{% for elemento in lista %}
-	<ul>
-	  <li><strong>{{elemento.nombre}}</strong></li>
-	  <li>{{elemento.codigo}}</li>
-	  <li>{{elemento.Programa}}</li>
-	</ul>
+   {{asd}} 
+    <h1>ultimos parciales</h1>
+  {% for elemento in lparcial %}
+    {% for elemento2 in lmateria %}
+      {% for elemento3 in lprofesor %}
+         {% if elemento.ID_materia == elemento2 %}
+          {% if elemento.ID_profesor == elemento3 %}
+	       <ul>
+	         <li><strong>N# {{elemento.ID_parcial}}</strong></li>
+	         <li>{{elemento2.nombre}}</li>
+	       
+           <li>{{elemento3.nombre}} {{elemento3.apellido}}</li>
+	       </ul>
+          {% endif %}
+         {% endif %}
+      {% endfor %}
+    {% endfor %}
 	{% endfor %}
   </body>
 </html>

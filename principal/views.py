@@ -12,3 +12,12 @@ from django.shortcuts import render_to_response, get_object_or_404
 def lista_materias(request):
 	materias = Materia.objects.all()
 	return render_to_response('lista_materias.html',{'lista':materias})
+
+def inicio(request):
+	profesor = Profesor.objects.all()
+	materia = Materia.objects.all()
+	usuario = User.objects.all()
+	parcial = Parciale.objects.all()
+
+
+	return render_to_response('inicio.html',{'lmateria':materia,'lusuarios':usuario,'lparcial':parcial,'lprofesor':profesor})
